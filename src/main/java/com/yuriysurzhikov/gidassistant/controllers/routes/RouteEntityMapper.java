@@ -1,8 +1,8 @@
 package com.yuriysurzhikov.gidassistant.controllers.routes;
 
-import com.gidassistant.server.model.client.RouteFromClient;
-import com.gidassistant.server.model.server.Route;
-import com.gidassistant.server.utils.EntityMapper;
+import com.yuriysurzhikov.gidassistant.model.client.RouteFromClient;
+import com.yuriysurzhikov.gidassistant.model.server.Route;
+import com.yuriysurzhikov.gidassistant.utils.EntityMapper;
 
 public class RouteEntityMapper implements EntityMapper<Route, RouteFromClient> {
     @Override
