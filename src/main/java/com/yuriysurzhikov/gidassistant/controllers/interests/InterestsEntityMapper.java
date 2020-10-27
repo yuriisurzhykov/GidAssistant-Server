@@ -1,7 +1,7 @@
 package com.yuriysurzhikov.gidassistant.controllers.interests;
 
 import com.yuriysurzhikov.gidassistant.model.client.InterestFromClient;
-import com.yuriysurzhikov.gidassistant.model.server.Interest;
+import com.yuriysurzhikov.gidassistant.model.db.Interest;
 import com.yuriysurzhikov.gidassistant.utils.EntityMapper;
 
 public class InterestsEntityMapper implements EntityMapper<Interest, InterestFromClient> {
