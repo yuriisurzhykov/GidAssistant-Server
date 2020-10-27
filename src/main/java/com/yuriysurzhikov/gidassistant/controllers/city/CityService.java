@@ -1,11 +1,11 @@
-package com.yuriysurzhikov.gidassistant.controllers.routes;
+package com.yuriysurzhikov.gidassistant.controllers.city;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class RouteService {
+public class CityService {
 
     @Autowired
-    private RouteRepository routeRepository;
+    private CityRepository repository;
 }

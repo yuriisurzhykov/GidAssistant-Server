@@ -1,13 +1,13 @@
-package com.yuriysurzhikov.gidassistant.controllers.routes;
+package com.yuriysurzhikov.gidassistant.controllers.city;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/route")
-public class RouteController {
+@RequestMapping("/city")
+public class CityController {
 
     @Autowired
-    private RouteService routeService;
+    private CityService cityService;
 }
