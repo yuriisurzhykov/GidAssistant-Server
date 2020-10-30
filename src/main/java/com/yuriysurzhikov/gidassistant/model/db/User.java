@@ -1,7 +1,9 @@
 package com.yuriysurzhikov.gidassistant.model.db;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -9,14 +11,14 @@ import java.util.Set;
 public class User {
 
     @Id
-    String id;
-    String name;
-    String passwd;
-    Long birthday;
-    Integer age;
+    public String id;
+    public String name;
+    public String passwd;
+    public Long birthday;
+    public Integer age;
     @ManyToOne
     @JoinColumn(name="city_id", nullable=false)
-    City city;
+    public City city;
 
     @ManyToMany(cascade = { CascadeType.ALL })
     @JoinTable(
@@ -24,5 +26,5 @@ public class User {
             joinColumns = { @JoinColumn(name = "user_id") },
             inverseJoinColumns = { @JoinColumn(name = "interest_id") }
     )
-    Set<Interest> interests = new HashSet<>();
+    public List<Interest> interests = new ArrayList<>();
 }

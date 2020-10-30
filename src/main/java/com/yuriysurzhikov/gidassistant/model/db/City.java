@@ -6,22 +6,24 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Table(name = "city")
 public class City {
 
     @Id
-    String id;
-    String name;
-    Double latitude;
-    Double longitude;
-    String googleUrl;
+    public String id;
+    public String name;
+    public Double latitude;
+    public Double longitude;
+    public String googleUrl;
+    public String type;
 
     @OneToMany(mappedBy="city")
     @JsonIgnore
-    protected Set<User> users = new HashSet<>();
+    public List<User> users = new ArrayList<>();
 
 }

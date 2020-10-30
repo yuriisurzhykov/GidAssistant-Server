@@ -6,6 +6,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class RouteService {
 
-    @Autowired
-    private RouteRepository routeRepository;
+    private final RouteRepository routeRepository;
+    private final RouteEntityMapper routeEntityMapper;
+
+    public RouteService(RouteRepository routeRepository, RouteEntityMapper routeEntityMapper) {
+        this.routeRepository = routeRepository;
+        this.routeEntityMapper = routeEntityMapper;
+    }
 }

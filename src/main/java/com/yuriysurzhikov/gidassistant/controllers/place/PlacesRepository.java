@@ -4,4 +4,5 @@ import com.yuriysurzhikov.gidassistant.model.db.Place;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface PlacesRepository extends JpaRepository<Place, String> {
+    Place findByNameAndLatitudeAndLongitude(String name, Double lat, Double lng);
 }
