@@ -1,7 +1,9 @@
 package com.yuriysurzhikov.gidassistant.model.db;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -9,13 +11,13 @@ import java.util.Set;
 public class Place {
 
     @Id
-    String id;
-    String name;
-    String description;
-    String googleUrl;
-    String photoUrl;
-    Double latitude;
-    Double longitude;
+    public String id;
+    public String name;
+    public String description;
+    public String googleUrl;
+    public String photoUrl;
+    public Double latitude;
+    public Double longitude;
 
     @ManyToMany(cascade = { CascadeType.ALL })
     @JoinTable(
@@ -23,8 +25,8 @@ public class Place {
             joinColumns = { @JoinColumn(name = "place_id") },
             inverseJoinColumns = { @JoinColumn(name = "interest_id") }
     )
-    Set<Interest> interests = new HashSet<>();
+    public List<Interest> interests = new ArrayList<>();
 
     @ManyToMany(mappedBy = "places")
-    protected Set<Route> routes = new HashSet<>();
+    public List<Route> routes = new ArrayList<>();
 }

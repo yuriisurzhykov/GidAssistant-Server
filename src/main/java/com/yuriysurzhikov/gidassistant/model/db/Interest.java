@@ -4,7 +4,9 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -12,12 +14,12 @@ import java.util.Set;
 public class Interest {
 
     @Id
-    String id;
-    String name;
+    public String id;
+    public String name;
 
     @ManyToMany(mappedBy = "interests")
-    protected Set<User> users = new HashSet<>();
+    protected List<User> users = new ArrayList<>();
 
     @ManyToMany(mappedBy = "interests")
-    protected Set<Place> places = new HashSet<>();
+    protected List<Place> places = new ArrayList<>();
 }
