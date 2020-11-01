@@ -1,15 +1,16 @@
 package com.yuriysurzhikov.gidassistant.model.client;
 
 import com.sun.istack.Nullable;
-import com.yuriysurzhikov.gidassistant.utils.DateUtils;
 
 import java.util.*;
 
 public class UserFromClient {
 
     /* Field for user data as person */
-    private String id;
+    private String serverId;
     private String name;
+    private String login;
+    private String email;
     private String passwd;
     private Long birthday;
     private CityFromClient city;
@@ -22,11 +23,15 @@ public class UserFromClient {
     private Long loginTime;
     @Nullable
     private String phoneData;
+    @Nullable
+    private String macAddr;
 
     public UserFromClient() {
-        id = UUID.randomUUID().toString();
+        serverId = null;
         name = "";
         passwd = "";
+        login = "";
+        email = "";
         birthday = Calendar.getInstance().getTime().getTime();
         city = new CityFromClient();
         ip = null;
@@ -34,18 +39,22 @@ public class UserFromClient {
         phoneData = null;
     }
 
-    public UserFromClient(String id,
+    public UserFromClient(String serverId,
                           String name,
+                          String login,
+                          String email,
                           String passwd,
                           Long birthday,
-                          Integer age,
                           CityFromClient city,
                           List<InterestFromClient> interests,
                           String ip,
                           Long loginTime,
-                          String phoneData) {
-        this.id = id;
+                          String phoneData,
+                          String macAddr) {
+        this.serverId = serverId;
         this.name = name;
+        this.login = login;
+        this.email = email;
         this.passwd = passwd;
         this.birthday = birthday;
         this.city = city;
@@ -53,14 +62,15 @@ public class UserFromClient {
         this.ip = ip;
         this.loginTime = loginTime;
         this.phoneData = phoneData;
+        this.macAddr = macAddr;
     }
 
-    public String getId() {
-        return id;
+    public String getServerId() {
+        return serverId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setServerId(String serverId) {
+        this.serverId = serverId;
     }
 
     public String getName() {
@@ -69,6 +79,22 @@ public class UserFromClient {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPasswd() {
@@ -125,5 +151,13 @@ public class UserFromClient {
 
     public void setPhoneData(String phoneData) {
         this.phoneData = phoneData;
+    }
+
+    public String getMacAddr() {
+        return macAddr;
+    }
+
+    public void setMacAddr(String macAddr) {
+        this.macAddr = macAddr;
     }
 }

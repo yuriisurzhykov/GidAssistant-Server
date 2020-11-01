@@ -1,9 +1,6 @@
 package com.yuriysurzhikov.gidassistant.model.db;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -14,7 +11,7 @@ import java.util.Set;
 public class Interest {
 
     @Id
-    public String id;
+    @Column(name = "name", unique = true)
     public String name;
 
     @ManyToMany(mappedBy = "interests")

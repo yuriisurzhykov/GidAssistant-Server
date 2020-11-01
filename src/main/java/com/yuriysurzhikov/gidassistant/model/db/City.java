@@ -20,6 +20,7 @@ public class City {
     public Double latitude;
     public Double longitude;
     public String googleUrl;
+    public String photoUrl;
     public String type;
 
     @OneToMany(mappedBy="city")

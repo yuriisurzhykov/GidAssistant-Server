@@ -17,6 +17,9 @@ public class UserEntityMapper implements EntityMapper<User, UserFromClient> {
     private CityEntityMapper cityEntityMapper;
     @Autowired
     private InterestsEntityMapper interestsEntityMapper;
+    @Autowired
+    private UserRepository userRepository;
+
     @Override
     public UserFromClient mapFromEntity(User user) {
         return null;
@@ -24,14 +27,19 @@ public class UserEntityMapper implements EntityMapper<User, UserFromClient> {
 
     @Override
     public User mapToEntity(UserFromClient userFromClient) {
-        User user = new User();
-        user.id = UUID.randomUUID().toString();
-        user.name = userFromClient.getName();
-        user.passwd = userFromClient.getPasswd();
-        user.birthday = userFromClient.getBirthday();
-        user.age = DateUtils.calculateAge(userFromClient.getBirthday());
-        user.city = cityEntityMapper.mapToEntity(userFromClient.getCity());
-        user.interests = interestsEntityMapper.mapListToEntity(userFromClient.getInterests());
+        User user;
+        if (userFromClient.getServerId() == null || (user = userRepository.findUserById(userFromClient.getServerId())) == null) {
+            user = new User();
+            user.id = UUID.randomUUID().toString();
+            user.name = userFromClient.getName();
+            user.login = userFromClient.getLogin() != null ? userFromClient.getLogin() : userFromClient.getEmail();
+            user.email = userFromClient.getEmail();
+            user.passwd = userFromClient.getPasswd();
+            user.birthday = userFromClient.getBirthday();
+            user.age = DateUtils.calculateAge(userFromClient.getBirthday());
+            user.city = cityEntityMapper.mapToEntity(userFromClient.getCity());
+            user.interests = interestsEntityMapper.mapListToEntity(userFromClient.getInterests());
+        }
         return user;
     }
 
