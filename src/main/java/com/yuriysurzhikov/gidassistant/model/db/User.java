@@ -1,5 +1,7 @@
 package com.yuriysurzhikov.gidassistant.model.db;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -13,6 +15,8 @@ public class User {
     @Id
     public String id;
     public String name;
+    public String email;
+    public String login;
     public String passwd;
     public Long birthday;
     public Integer age;
@@ -21,10 +25,14 @@ public class User {
     public City city;
 
     @ManyToMany(cascade = { CascadeType.ALL })
-    @JoinTable(
+    @JoinTable (
             name = "user_interest",
             joinColumns = { @JoinColumn(name = "user_id") },
-            inverseJoinColumns = { @JoinColumn(name = "interest_id") }
+            inverseJoinColumns = { @JoinColumn(name = "interest_name") }
     )
     public List<Interest> interests = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user")
+    @JsonIgnore
+    public List<LoginSession> loginSessions = new ArrayList<>();
 }

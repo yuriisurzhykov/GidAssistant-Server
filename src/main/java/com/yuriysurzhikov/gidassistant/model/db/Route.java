@@ -15,6 +15,7 @@ public class Route {
     public String name;
     public Integer amountPlaces;
     public Long routeLengthM;
+
     @ManyToMany(cascade = {CascadeType.ALL})
     @JoinTable(
             name = "route_places",

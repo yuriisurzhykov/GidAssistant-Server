@@ -23,4 +23,14 @@ public class Const {
         public static final String GET_CITY_TYPE_BIG = "big";
         public static final String GET_CITY_TYPE_SMALL = "town";
     }
+
+    public static class User {
+        public static final String UNIQUE_ID_KEY = "unique_id";
+        public static final String SESSION_ID_KEY = "session_id_key";
+        public static final String ERROR_SESSION_MESSAGE = "error_message";
+    }
+
+    public static class Messages {
+        public static final String login_error_message = "Error was occurred during user login!";
+    }
 }

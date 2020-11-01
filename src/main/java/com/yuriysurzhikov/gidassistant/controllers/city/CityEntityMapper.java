@@ -21,10 +21,9 @@ public class CityEntityMapper implements EntityMapper<City, CityFromClient> {
 
     @Override
     public City mapToEntity(CityFromClient cityFromClient) {
-        City city = new City();
-        if(cityFromClient.getServerId() != null && !cityFromClient.getServerId().isEmpty()) {
-            city = cityRepository.getOne(cityFromClient.getServerId());
-        } else {
+        City city;
+        if((city = cityRepository.findCityById(cityFromClient.getServerId())) != null) {
+            city = new City();
             city.id = UUID.randomUUID().toString();
             city.name = cityFromClient.getName();
             city.latitude = cityFromClient.getLatitude();

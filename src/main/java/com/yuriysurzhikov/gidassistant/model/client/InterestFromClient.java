@@ -2,15 +2,14 @@ package com.yuriysurzhikov.gidassistant.model.client;
 
 public class InterestFromClient {
 
-    private String serverId;
     private String name;
 
-    public String getServerId() {
-        return serverId;
+    public InterestFromClient() {
+        this.name = "";
     }
 
-    public void setServerId(String serverId) {
-        this.serverId = serverId;
+    public InterestFromClient(String name) {
+        this.name = name;
     }
 
     public String getName() {

@@ -6,7 +6,6 @@ import com.yuriysurzhikov.gidassistant.utils.EntityMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
 public class InterestsEntityMapper implements EntityMapper<Interest, InterestFromClient> {
@@ -21,11 +20,10 @@ public class InterestsEntityMapper implements EntityMapper<Interest, InterestFro
 
     @Override
     public Interest mapToEntity(InterestFromClient interestFromClient) {
-        Interest interest = new Interest();
-        if(interestFromClient.getServerId() != null && !interestFromClient.getServerId().isEmpty()) {
-            interest = interestsRepository.getOne(interestFromClient.getServerId());
-        } else {
-            interest.id = UUID.randomUUID().toString();
+        Interest interest;
+        interest = interestsRepository.findInterestByName(interestFromClient.getName());
+        if (interest == null) {
+            interest = new Interest();
             interest.name = interestFromClient.getName();
         }
         return interest;
