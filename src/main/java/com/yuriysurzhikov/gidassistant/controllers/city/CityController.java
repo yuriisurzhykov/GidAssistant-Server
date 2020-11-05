@@ -18,7 +18,7 @@ public class CityController {
     @PostMapping("/create")
     public ResponseEntity<?> createCity(@RequestBody CityFromClient city) {
         Integer code = cityService.addCityIfNotExists(city);
-        if(code == Const.Repository.SAVE_SUCCESSFUL) {
+        if(code.equals(Const.Repository.SAVE_SUCCESSFUL)) {
             return new ResponseEntity<>(HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.TOO_MANY_REQUESTS);

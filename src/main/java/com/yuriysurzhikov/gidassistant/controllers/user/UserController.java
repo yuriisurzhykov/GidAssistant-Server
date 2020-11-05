@@ -20,12 +20,12 @@ public class UserController {
 
     @PostMapping("/register")
     public ResponseEntity<Map<String, String>> registerUser(@RequestBody UserFromClient user) {
-        userService.registerUser(user);
+        user.setServerId(userService.registerUser(user).component2());
         return login(user);
     }
 
     @PostMapping("/login")
     public ResponseEntity<Map<String, String>> login(UserFromClient user) {
-        return null;
+        return new ResponseEntity<>(userService.loginUser(user), HttpStatus.OK);
     }
 }

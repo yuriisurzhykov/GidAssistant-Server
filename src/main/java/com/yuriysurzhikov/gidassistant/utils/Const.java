@@ -25,12 +25,13 @@ public class Const {
     }
 
     public static class User {
-        public static final String UNIQUE_ID_KEY = "unique_id";
-        public static final String SESSION_ID_KEY = "session_id_key";
-        public static final String ERROR_SESSION_MESSAGE = "error_message";
+        public static final String unique_id = "unique_id";
+        public static final String session_id_key = "session_id_key";
+        public static final String error_message = "error_message";
+        public static final String user_unique_id = "user_unique_id";
     }
 
     public static class Messages {
-        public static final String login_error_message = "Error was occurred during user login!";
+        public static final String login_error_message = "login_error_message";
     }
 }

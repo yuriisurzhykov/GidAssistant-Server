@@ -3,13 +3,13 @@ spring:
     database: POSTGRESQL
     show-sql: true
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: update
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
   datasource:
     platform: postgres
-    url: jdbc:postgresql://ec2-54-247-94-127.eu-west-1.compute.amazonaws.com:5432/d6h6ffcqe9js2
-    username: tvnslwamrgfedf
-    password: a5bc3b70c6e4699540a3a4021b75ed9b11a428ab3150ddc1525fe112241d8a63
+    url: jdbc:postgresql://ec2-54-155-22-153.eu-west-1.compute.amazonaws.com:5432/d65vtnek1f5eko
+    username: uqvixlqirbcofc
+    password: 821f1e23352b1794884d2f43c9c6bc6618c24d17cd09963f2baca562c645596c
     driverClassName: org.postgresql.Driver
