@@ -44,14 +44,14 @@ public class UserService {
             return loginInitializer.loginUser(user);
         } catch (IncorrectCredentialsException e) {
             e.printStackTrace();
-            return new HashMap<>() {
+            return new HashMap<String, String>() {
                 {
                     put(error_message, e.getMessage());
                 }
             };
         } catch (UserDoesNotExists ex) {
             ex.printStackTrace();
-            return new HashMap<>(1) {
+            return new HashMap<String, String>(1) {
                 {
                     put(error_message, ex.getMessage());
                 }
