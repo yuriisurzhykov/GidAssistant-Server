@@ -86,14 +86,28 @@ Json-file must contains next params
 **For both options, you need to refer to this url with method _DELETE_**
 ` https://gidassistant.herokuapp.com/user/logout `
 
+Headers must contains two header:
+|   Name   |       Value         |
+|----------|---------------------|
+| "user_unique_id" | 63562db4-20b9-43dd-b1c1-e4f028453940 |
+| "session_id_key" | 63562db4-20b9-43dd-b1c1-e4f028453940 |
+
 **1.1 Logout only from current phone**
 
-Example of JSON request
+` 
 
-` "sessionId":"63562db4-20b9-43dd-b1c1-e4f028453940" `
+    "session_id_key":"63562db4-20b9-43dd-b1c1-e4f028453940"
+    "user_unique_id": null
+
+`
 
 **1.2 Logout from all phones**
 
 Example of JSON request
 
-` "userId":"76f940d2-a2ac-46e3-b4f9-8ce095c158bb" `
+` 
+
+    "session_id_key": null
+    "user_unique_id": 63562db4-20b9-43dd-b1c1-e4f028453940
+
+`
