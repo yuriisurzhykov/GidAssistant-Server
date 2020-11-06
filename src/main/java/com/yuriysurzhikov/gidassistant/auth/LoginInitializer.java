@@ -56,15 +56,11 @@ public class LoginInitializer {
                 List<LoginSession> sessionDataList = sessionRepository.findAllByUserId(user.userId);
                 sessionDataList
                         .parallelStream()
-                        .peek(session -> {
-                            sessionRepository.deleteById(session.id);
-                        })
-                        .close();
-                return true;
+                        .forEach(session -> sessionRepository.deleteById(session.id));
             } else {
                 sessionRepository.deleteById(user.sessionId);
-                return true;
             }
+            return true;
         } catch (Exception e) {
             e.printStackTrace();
             throw new IncorrectCredentialsException(Const.Messages.login_error_message);

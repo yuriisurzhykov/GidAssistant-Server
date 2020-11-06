@@ -2,6 +2,7 @@ package com.yuriysurzhikov.gidassistant.controllers.user;
 
 import com.yuriysurzhikov.gidassistant.model.client.UserFromClient;
 import com.yuriysurzhikov.gidassistant.model.login.LogoutSessionData;
+import com.yuriysurzhikov.gidassistant.utils.Const;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,7 +29,15 @@ public class UserController {
     }
 
     @DeleteMapping("/logout")
-    public ResponseEntity<?> logout(@RequestBody LogoutSessionData logoutData) {
+    public ResponseEntity<?> logout(@RequestHeader(Const.User.user_unique_id) String userId,
+                                    @RequestHeader(Const.User.session_id_key) String sessionId) {
+        LogoutSessionData logoutData = new LogoutSessionData();
+        if(userId != null) {
+            logoutData.userId = userId;
+        }
+        if(sessionId != null) {
+            logoutData.sessionId = sessionId;
+        }
         if (userService.logoutUser(logoutData))
             return new ResponseEntity<>(HttpStatus.OK);
         else
