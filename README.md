@@ -82,8 +82,8 @@ Json-file must contains next params
 `
 
 # User logout
-### 1. There are 2 types of login**
-**All of these must be call this URL with method _DELETE_**
+### 1. There are 2 types of login
+**For both options, you need to refer to this url with method _DELETE_**
 ` https://gidassistant.herokuapp.com/user/logout `
 
 **1.1 Logout only from current phone**
