@@ -19,7 +19,7 @@
 |   "interests"  | List<Interest> |                     | Optional |
 |      "ip"      |      String    |    "192.168.0.1"    |   Yes    |
 |    "macAddr"   |      String    | "00-26-DD-14-C4-EE" |   Yes    |
-|   "phoneData"  |      String    |       "Yuriy"       |   Yes    |
+|   "phoneData"  |      String    |   "Samsung J415fn"  |   Yes    |
  
 **1.2 City fields for creating**
  
@@ -28,7 +28,7 @@
 |     "name"     |      String    |      "Odessa"       |   Yes    |
 |   "latitude"   |      Double    |       46.4775       |   Yes    |
 |   "longitude"  |      Double    |       30.7326       |   Yes    |
-|   "googleUrl"  |      String    |       "Yuriy"       |   Yes    |
+|   "googleUrl"  |      String    |   "its too long😔" |   Yes    |
 |     "type"     |      String    |    big/town/small   | Optional |
 
 **1.3 Interests fields for creating**
