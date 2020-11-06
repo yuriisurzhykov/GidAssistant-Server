@@ -40,7 +40,7 @@
 **1.4 _Example of JSON-request_**
 
  `
- {
+ 
     "name":"Your name",
     "passwd":"Your password",
     "birthday":10398129319012,
@@ -63,8 +63,8 @@
     
     "ip":"Your IP address",
     "macAddr":"Your MAC-addr",
-    "phoneData":"Your phone name"
-}
+    "phoneData":"Your phone name" 
+    
 `
 
 # User login
@@ -74,7 +74,9 @@
 Json-file must contains next params
 
 `
+ 
     "serverId":"your user ID obtained during registration", (example: 76f940d2-a2ac-46e3-b4f9-8ce095c158bb)
     "ip":"your device IP address",
     "macAddr":"your device MAC address"
+
 `
