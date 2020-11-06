@@ -6,7 +6,7 @@
 ` https://gidassistant.herokuapp.com/user/register `
  
  
-1.1 **User data for register**
+**1.1 User data for register**
  
 |   Param name   |     Data type  |      Example        |  Needed  |
 |----------------|----------------|---------------------|----------|
@@ -21,7 +21,7 @@
 |    "macAddr"   |      String    | "00-26-DD-14-C4-EE" |   Yes    |
 |   "phoneData"  |      String    |       "Yuriy"       |   Yes    |
  
-1.2 **City fields for creating**
+**1.2 City fields for creating**
  
 |   Param name   |     Data type  |      Example        |  Needed  |
 |----------------|----------------|---------------------|----------|
@@ -31,13 +31,13 @@
 |   "googleUrl"  |      String    |       "Yuriy"       |   Yes    |
 |     "type"     |      String    |    big/town/small   | Optional |
 
-1.3 **Interests fields for creating**
+**1.3 Interests fields for creating**
  
 |   Param name   |     Data type  |      Example        |  Needed  |
 |----------------|----------------|---------------------|----------|
 |     "name"     |      String    |      "Movie"       |   Yes    |
 
-1.4 **_Example of JSON-request_**
+**1.4 _Example of JSON-request_**
  `
  {
  
@@ -67,7 +67,7 @@
   `
 
 # User login
-1. For login user you must use this url, with method **_POST_**
+**1. For login user you must use this url, with method **_POST_****
 ` https://gidassistant.herokuapp.com/user/login `
 
 Json-file must contains next params
