@@ -2,7 +2,7 @@
 **Base url: https://gidassistant.herokuapp.com/**
 
 # User registration
-1. For creating new user use this url, with method **_POST_**
+### 1. For creating new user use this url, with method **_POST_**
 ` https://gidassistant.herokuapp.com/user/register `
  
  
@@ -68,15 +68,32 @@
 `
 
 # User login
-**1. For login user you must use this url, with method **_POST_****
+### 1. For login user you must use this url, with method **_POST_**
 ` https://gidassistant.herokuapp.com/user/login `
 
 Json-file must contains next params
 
 `
- 
+
     "serverId":"your user ID obtained during registration", (example: 76f940d2-a2ac-46e3-b4f9-8ce095c158bb)
     "ip":"your device IP address",
     "macAddr":"your device MAC address"
 
 `
+
+# User logout
+### 1. There are 2 types of login**
+**All of these must be call this URL with method _DELETE_**
+` https://gidassistant.herokuapp.com/user/logout `
+
+**1.1 Logout only from current phone**
+
+Example of JSON request
+
+` "sessionId":"63562db4-20b9-43dd-b1c1-e4f028453940" `
+
+**1.2 Logout from all phones**
+
+Example of JSON request
+
+` "userId":"76f940d2-a2ac-46e3-b4f9-8ce095c158bb" `
