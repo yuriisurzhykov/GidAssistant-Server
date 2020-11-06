@@ -7,6 +7,7 @@ import com.yuriysurzhikov.gidassistant.exceptions.UserDoesNotExists;
 import com.yuriysurzhikov.gidassistant.model.client.UserFromClient;
 import com.yuriysurzhikov.gidassistant.model.db.LoginSession;
 import com.yuriysurzhikov.gidassistant.model.db.User;
+import com.yuriysurzhikov.gidassistant.model.login.LogoutSessionData;
 import com.yuriysurzhikov.gidassistant.model.login.SessionData;
 import com.yuriysurzhikov.gidassistant.utils.Const;
 import kotlin.Pair;
@@ -14,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -30,8 +32,8 @@ public class LoginInitializer {
         if(userService.isUserCredentialsCorrect(user)) {
             Map<String, String> map = new HashMap<>();
             SessionData session = new SessionData();
-            session.setClientIP(user.getIp());
-            session.setMacAddr(user.getMacAddr());
+            session.clientIP = user.getIp();
+            session.macAddr = user.getMacAddr();
             LoginSession session1 = LoginSessionCreator.createSession(session);
             Pair<User, Boolean> pair = userEntityMapper.mapToEntity(user);
             if(pair.component2()){
@@ -47,14 +49,24 @@ public class LoginInitializer {
         throw new IncorrectCredentialsException(Const.Messages.login_error_message);
     }
 
-    public Boolean logoutUser(UserFromClient user) throws IncorrectCredentialsException {
-        if(userService.isUserCredentialsCorrect(user)) {
-            if(user.getServerId() != null) {
-                User user1 = userEntityMapper.mapToEntity(user).component1();
-                for(LoginSession loginSession : sessionRepository.findSessionsByUser(user1))
-                    sessionRepository.delete(loginSession);
+    public Boolean logoutUser(LogoutSessionData user) throws IncorrectCredentialsException {
+        try{
+            if(user.userId != null && !user.userId.isEmpty()) {
+                List<LoginSession> sessionDataList = sessionRepository.findAllByUserId(user.userId);
+                sessionDataList
+                        .parallelStream()
+                        .peek(session -> {
+                            sessionRepository.deleteById(session.id);
+                        })
+                        .close();
+                return true;
+            } else {
+                sessionRepository.deleteById(user.sessionId);
+                return true;
             }
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new IncorrectCredentialsException(Const.Messages.login_error_message);
         }
-        throw new IncorrectCredentialsException(Const.Messages.login_error_message);
     }
 }

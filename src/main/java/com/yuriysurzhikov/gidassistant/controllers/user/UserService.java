@@ -1,13 +1,12 @@
 package com.yuriysurzhikov.gidassistant.controllers.user;
 
 import com.yuriysurzhikov.gidassistant.auth.LoginInitializer;
-import com.yuriysurzhikov.gidassistant.auth.LoginSessionCreator;
-import com.yuriysurzhikov.gidassistant.controllers.city.CityEntityMapper;
-import com.yuriysurzhikov.gidassistant.controllers.interests.InterestsService;
 import com.yuriysurzhikov.gidassistant.exceptions.IncorrectCredentialsException;
 import com.yuriysurzhikov.gidassistant.exceptions.UserDoesNotExists;
 import com.yuriysurzhikov.gidassistant.model.client.UserFromClient;
 import com.yuriysurzhikov.gidassistant.model.db.User;
+import com.yuriysurzhikov.gidassistant.model.login.LogoutSessionData;
+import com.yuriysurzhikov.gidassistant.model.login.SessionData;
 import com.yuriysurzhikov.gidassistant.utils.Const;
 import kotlin.Pair;
 import org.springframework.stereotype.Service;
@@ -60,8 +59,13 @@ public class UserService {
         }
     }
 
-    public void logoutUser(UserFromClient user) {
-
+    public Boolean logoutUser(LogoutSessionData user) {
+        try{
+            return loginInitializer.logoutUser(user);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     public User getUserById(String id) {

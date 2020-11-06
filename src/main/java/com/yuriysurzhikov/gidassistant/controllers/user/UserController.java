@@ -1,13 +1,11 @@
 package com.yuriysurzhikov.gidassistant.controllers.user;
 
 import com.yuriysurzhikov.gidassistant.model.client.UserFromClient;
+import com.yuriysurzhikov.gidassistant.model.login.LogoutSessionData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
@@ -27,5 +25,13 @@ public class UserController {
     @PostMapping("/login")
     public ResponseEntity<Map<String, String>> login(UserFromClient user) {
         return new ResponseEntity<>(userService.loginUser(user), HttpStatus.OK);
+    }
+
+    @DeleteMapping("/logout")
+    public ResponseEntity<?> logout(@RequestBody LogoutSessionData logoutData) {
+        if (userService.logoutUser(logoutData))
+            return new ResponseEntity<>(HttpStatus.OK);
+        else
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 }

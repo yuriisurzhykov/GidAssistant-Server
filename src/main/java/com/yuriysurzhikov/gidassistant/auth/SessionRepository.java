@@ -9,4 +9,6 @@ import java.util.List;
 public interface SessionRepository extends JpaRepository<LoginSession, String> {
     LoginSession findSessionBySessionIPAndMacAddr(String ip, String mac);
     List<LoginSession> findSessionsByUser(User user);
+    List<LoginSession> findAllByUserId(String id);
+    void deleteAllByIdIn(List<String> ids);
 }
