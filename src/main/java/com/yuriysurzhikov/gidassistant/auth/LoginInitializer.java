@@ -1,6 +1,7 @@
 package com.yuriysurzhikov.gidassistant.auth;
 
 import com.yuriysurzhikov.gidassistant.controllers.user.UserEntityMapper;
+import com.yuriysurzhikov.gidassistant.controllers.user.UserRepository;
 import com.yuriysurzhikov.gidassistant.controllers.user.UserService;
 import com.yuriysurzhikov.gidassistant.exceptions.IncorrectCredentialsException;
 import com.yuriysurzhikov.gidassistant.exceptions.UserDoesNotExists;
@@ -24,12 +25,12 @@ public class LoginInitializer {
     @Autowired
     private SessionRepository sessionRepository;
     @Autowired
-    private UserService userService;
+    private UserRepository userRepository;
     @Autowired
     private UserEntityMapper userEntityMapper;
 
     public Map<String, String> loginUser(UserFromClient user) throws IncorrectCredentialsException, UserDoesNotExists {
-        if(userService.isUserCredentialsCorrect(user)) {
+        if(userRepository.findUserById(user.getServerId()) != null) {
             Map<String, String> map = new HashMap<>();
             SessionData session = new SessionData();
             session.clientIP = user.getIp();
