@@ -69,6 +69,6 @@ public class UserService {
     }
 
     public Boolean isUserCredentialsCorrect(UserFromClient user) {
-        return userRepository.findUserByLoginAndPasswd(user.getLogin() == null ? user.getEmail() : user.getLogin(), user.getPasswd()) != null;
+        return userRepository.findUserById(user.getServerId()) != null;
     }
 }
